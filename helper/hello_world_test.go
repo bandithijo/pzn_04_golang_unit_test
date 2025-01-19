@@ -21,6 +21,20 @@ func BenchmarkHelloWorldNur(b *testing.B) {
 	}
 }
 
+func BenchmarkHelloWorldSub(b *testing.B) {
+	b.Run("Rizqi", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			HelloWorld("Rizqi")
+		}
+	})
+
+	b.Run("Nur", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			HelloWorld("Nur")
+		}
+	})
+}
+
 func TestMain(m *testing.M) {
 	// before
 	fmt.Println("BEFORE UNIT TEST")
