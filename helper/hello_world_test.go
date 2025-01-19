@@ -31,6 +31,37 @@ func TestSubTest(t *testing.T) {
 	})
 }
 
+func TestHelloWorldTable(t *testing.T) {
+	tests := []struct {
+		name     string
+		request  string
+		expected string
+	}{
+		{
+			name: "HellowWorld(Rizqi)",
+			request: "Rizqi",
+			expected: "Hello, Rizqi",
+		},
+		{
+			name: "HelloWorld(Nur)",
+			request: "Nur",
+			expected: "Hello, Nur",
+		},
+		{
+			name: "HelloWorld(Assyaufi)",
+			request: "Assyaufi",
+			expected: "Hello, Assyaufi",
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			result := HelloWorld(test.request)
+			require.Equal(t, test.expected, result)
+		})
+	}
+}
+
 func TestSkip(t *testing.T) {
 	if runtime.GOOS == "linux" {
 		t.Skip("Can not run test on Linux")
