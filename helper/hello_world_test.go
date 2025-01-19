@@ -19,6 +19,18 @@ func TestMain(m *testing.M) {
 	fmt.Println("AFTER UNIT TEST")
 }
 
+func TestSubTest(t *testing.T) {
+	t.Run("Rizqi", func(t *testing.T) {
+		result := HelloWorld("Rizqi")
+		require.Equal(t, "Hello, Rizqi", result)
+	})
+
+	t.Run("Nur", func(t *testing.T) {
+		result := HelloWorld("Nur")
+		require.Equal(t, "Hello, Nur", result)
+	})
+}
+
 func TestSkip(t *testing.T) {
 	if runtime.GOOS == "linux" {
 		t.Skip("Can not run test on Linux")
